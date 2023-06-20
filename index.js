@@ -45,12 +45,20 @@ let repetirString = (varString,veces) => {
 
 //- [ ] 9.- Crea la función **esPrimo** que acepte como argumento **un número** y devuelva ****true si es primo y false si no lo es****
 
-/*let esPrimo = x => {
-    if (x <= 1 ) {
-        return false
-    } else if (x % 2 == 0|| x % 3 == 0 || x % 2 == 5|| x % 7 == 0 ){
-        return false 
-} return true }*/
+let esPrimo = num1 => {
+    if (num1 <= 1) {
+        console.log(num1 + " no es primo");
+        return false;
+    }
+    for (let i = 2; i < num1; i++) {
+        if (num1 % i === 0) {
+            console.log("no es primo");
+            return false;
+        }
+    }
+    console.log("es primo");
+    return true;
+}
 
 
 //### Mezclando arrays y funciones ###
@@ -64,28 +72,26 @@ let ordenarArray = (numeros) => {
 
 //- [ ] 11.- Crear la función **obtenerPares** que acepta como argumento **un array de números** y devuelva un **array con los elementos pares**
 
-// ESTA CORRECTO
-/*
-let obternerPares = numeros => {
-    let arrayPares = [];
-    for (let i = 0 ; i < numeros.length ; i ++) {
-          if(numeros[i] % 2 === 0) {
-            arrayPares.push(numeros[i])  
-          }     
+
+let obtenerPares = (arr) => {
+    let arrPares = [];
+    for (let i= 0 ; i < arr.length ; i++) {
+        if (arr[i] % 2 == 0) {
+            arrPares.push(arr[i]);
+        }
     }
-    return arrayPares; 
-};*/
+    return arrPares;
+}
 
 
 //- [ ] 12.- Crear la función **pintarArray** que acepte como argumento **un array** y devuelva **una cadena de texto Array entrada: [0, 1, 2] String salida: '[0, 1, 2]'**
-/*
-let pintaArray = (inArray) => {
-    let arrayOut = [];
-    for (let datos of inArray) {
-        arrayOut.push(datos.toString());
-    }
-    return arrayOut 
-}*/
+let arr = [2,3,4,5,6]
+let pintarArray = arr => {
+    let arrStrin = arr.join(", ");
+    return `[${arrStrin}]`
+
+}
+
 
 //- [ ] 13.- Crear la función **arrayMapi** que acepte como argumento **un Array y una función** y devuelva **un array en el que se haya aplicado la función a cada elemento del array**
 
@@ -95,13 +101,20 @@ let arrayMapi = (arr,funcion) => {
 }
 
 //- [ ] 14.- Crear la función **eliminarDuplicados** que acepte como argumento **un array** y devuelva **un array en el que se hayan eliminado los duplicados**
+/*
+   let eliminarDuplicados = arr => {
+    let newArr = [] ;
+    arr.forEach(num => {
+        newArr.find(newArr != num   )
+    })
+   }*/
 
-/** 
+/*
 let eliminarDuplicados = (arr) => {
     let newArr= [];
     for (let i = 0 ; i < arr.length ; i++)
       for(let j = i + 1  ; j < arr.length ;  j++) {
-        if(arr[i] !== arr[j]) {
+        if(arr[i] != arr[j]) {
           newArr.push(arr[i])
         }
 
@@ -150,24 +163,9 @@ let esPar = y => {
 
 //- [ ] 22.- Crea el array **arrayFunciones** que tenga como valor **las funciones: suma, resta y multiplicación (todas aceptan 2 números como argumento y devuelve el resultado de su operación)**
 
-/* -------------------------
-// CREO Q ESTA CORRECTA
-arrayFunciones = [suma , resta , multiplicacion]    
-// Function Suma 
-let suma = (a,b) => {
-    return a + b ;
-}
+  let arrayFunciones = [(a,b)=> a+b, (a,b)=> a-b, (a,b)=> a*b  ]
 
-//Function resta 
-let resta = (a,b) => {
-    return a - b ;
-}
 
-//Function multiplicacio
-let multiplicacion  = (a,b) => {
-    return a * b ;}
-
-    ---------------*/
 
 
 //### Mezclando arrays y funciones ###
@@ -183,25 +181,47 @@ const ordenarArray2 = (arr) => {
 //- [ ] 24.- Crear la función **obtenerImpares** que acepta como argumento **un array de números** y devuelva un **array con los elementos impares**
 
 // ESTA CORRECTA
-/*let obtenerImpares = (arr) => {
+let obtenerImpares = (arr) => {
     let arrImpares = [];
     for (let i= 0 ; i < arr.length ; i++) {
-        if (arr[i] % 2 !== 0) {
+        if (arr[i] % 2 != 0) {
             arrImpares.push(arr[i]);
         }
     }
     return arrImpares;
-}*/
-
-//- [ ] 25.- Crear la función **sumarArray** que acepte como argumento **un array numérico** y devuelva **la suma de los números en el array Array: [1, 2, 3] resultado: 6**
-
-let sumarArray = arr => {
-    let suma = 0;
-    for (let i = 0 ; i < arr.length ; i++) {
-        suma+= newArr[i];
-
-    }
-    return suma
 }
 
+//- [ ] 25.- Crear la función **sumarArray** que acepte como argumento **un array numérico** y devuelva **la suma de los números en el array Array: [1, 2, 3] resultado: 6**
+/*let sumarArray = (arr) => {
+    let sumar = 0; 
+    for (let i = 0 ; i < arr.length ; i ++) {
+        sumar += arr[i]
+    }
+    return sumar
+}*/
+ 
+let sumarArray = (arr) => {
+    let newArr = 0 ;
+    arr.forEach(num => { newArr += num;})
+    return newArr
+}
+   
+
 //- [ ] 26.- Crear la función **multiplicarArray** que acepte como argumento **un array numérico** y devuelva **la multiplicación de los números en el array Array:  [2, 3, 4] resultado: 24**
+/*
+let multiplicarArray = arr => {
+    let newArr = 1
+    for (let i = 0 ; i < arr.length ; i++){
+        newArr *= arr[i]
+                 
+    }
+    return newArr
+}*/
+
+let multiplicarArray = (arr) => {
+    let newArr = 1
+    arr.forEach(num => {
+         newArr *= num ;
+    })
+    return newArr;
+}
